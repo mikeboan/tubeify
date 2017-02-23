@@ -1,14 +1,10 @@
 import * as SessionAPIUtil from '../util/session_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const RECEIVE_ERRORS = "RECIEVE_ERRORS";
 
 export function receiveCurrentUser(currentUser) {
   return { type: RECEIVE_CURRENT_USER, currentUser };
-}
-
-export function receiveErrors(errors) {
-  return { type: RECEIVE_ERRORS, errors };
 }
 
 export function signIn(user) {

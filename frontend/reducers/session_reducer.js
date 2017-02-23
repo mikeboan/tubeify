@@ -1,9 +1,6 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
 
-const _initialState = {
-  currentUser: null,
-  errors: {}
-};
+const _initialState = { currentUser: null };
 
 export default function sessionReducer(state = _initialState, action) {
   Object.freeze(state);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { signUp, receiveErrors } from '../actions/session_actions';
+import { clearErrors } from '../actions/error_actions';
+import { signUp } from '../actions/session_actions';
 import AuthForm from './auth_form';
 
 class SignUpForm extends Component {
@@ -11,25 +12,30 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { signUp, errors } = this.props;
+    const { signUp, errors, clearErrors } = this.props;
     return (
       <section>
         <h1>Sign up for Tubeify</h1>
-        <AuthForm submitText="Sign up" submitForm={ signUp } errors={ errors }/>
+        <AuthForm
+          submitText="Sign up"
+          submitForm={ signUp }
+          errors={ errors }
+          clearErrors={ clearErrors }
+        />
         <Link to="/session/new">Sign in instead</Link>
       </section>
     );
   }
 }
 
-function mapStateToProps({ session: { errors } }) {
+function mapStateToProps({ errors }) {
   return { errors };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     signUp: (user) => dispatch(signUp(user)),
-    clearErrors: () => dispatch(receiveErrors({}))
+    clearErrors: () => dispatch(clearErrors())
   };
 }
 

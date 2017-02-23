@@ -5,7 +5,6 @@ import SignoutButton from './sign_out_button';
 
 class Welcome extends React.Component {
   componentWillReceiveProps(newProps) {
-    debugger
     if (!newProps.currentUser) this.props.router.push('/session/new');
   }
 
